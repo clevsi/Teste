@@ -1,0 +1,147 @@
+
+- Clonar o projeto
+ git clone http://10.123.18.41/gitlab/caixa-bh/sismh.git
+
+- Armazenar as credenciais do git lab
+ git config credential.helper store
+ git config --system --unset credential.helper (reseta autenticacao)
+
+- Baixar as alterações do repositório e confirmar as credenciais para acesso
+ git pull
+
+- Enviar a branch develop local para o repositório remoto
+ git push --set-upstream origin develop
+
+- Configurar o git flow no projeto local. É possível configurar um nome alternativo para feature, release, hotfix, etc, porém é recomendável utilizar o padrão.
+ git flow init
+
+- Criar uma feature botaoPendenteArea61133
+ git flow feature start botaoPendenteArea61133
+
+- Finalizar a feature botaoPendenteArea61133 (neste momento as alterações são integradas à develop)
+ git flow feature finish botaoPendenteArea61133
+
+- Criar uma release botaoPendenteArea61133
+ git flow release start 1.0.7
+
+- Finalizar a release botaoPendenteArea61133 (neste momento as alterações são integradas à develop e à master)
+ git flow release finish 1.0.7
+
+- Listar todas as branches
+ git branch -a
+
+- Ver o status atual
+ git status
+
+- Baixar uma determinada branch
+ git checkout develop
+
+- Apagar o branch localmente
+ git branch -D <nome do branch>
+
+- Apagar o branch remotamente
+ git push <nome do origin> <nome do branch> --delete
+
+- Baixar um arquivo específico do repositório
+ git checkout pom.xml
+
+- Salvar as alterações locais, possibilitando trabalhar em outras branches ou qlqr outra coisa e futuramente voltar essas alterações
+ git stash 
+
+- Listar stash
+ git stash list
+
+- Aplicar o stash e mantê-lo na sua pilha
+ git stash apply
+
+- Aplicar o stash e logo em seguida apagá-lo da sua pilha
+ git stash pop
+
+- Recuperar as alterações específicas
+ git stash apply stash@{0}
+
+- Excluir o stash 0 (zero)
+ git stash drop
+
+- Excluir determinado stash
+ git stash drop stash@{index}
+
+- Abrir a interface gráfica
+ gitk
+
+- Limpar as alterações locais
+ git reset --merge
+ git reset HEAD~
+
+- Request-pull?
+ git request-pull origin/master feature/teste
+
+- Recuperar todos os commits realizados, mostrando no log
+ git reflog
+
+- lista as últimas ações
+ git reflog show
+
+- lista as últimas ações da branch
+ git reflog show nome_branch
+
+- desfaz ação executada na branch
+ git reset HEAD@{numero_acao_que_sera_desfeita}
+
+- Voltar o commit para uma determinada versão de acordo com o comando acima
+ git reset --hard 699dd49(número do hash gerado)
+
+- desfaz commit
+ git reset --soft origin/<branch_name>
+
+- desfaz commit e add
+ git reset --mixed origin/<branch_name>
+
+- desfaz commit, add e alterações
+ git reset --hard origin/<branch_name>
+
+- Configurar winmerge git
+ git config --global merge.tool winmerge
+ git config --replace --global mergetool.winmerge.cmd "\"C:\developer\tools\WinMerge\WinMergeU.exe\" -e -u -dl \"Base\" -dr \"Mine\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+ git config --global mergetool.prompt false
+
+- Criar tag
+ git tag v1.4.2
+
+- Subir as tags para o repositório
+ git push origin --tags
+
+- Excluir tag
+ git push --delete origin v1.4.2
+ git tag -d v1.4.2
+
+- Criar branch a partir de uma tag
+ git checkout tags/<tag> -b <branch>
+
+- Integrar alterações da develop em uma feature:
+ git checkout develop
+ git pull
+ git checkout feature/minhaFeature
+ git merge develop
+- Ou
+ git rebase develop
+
+- Resolver conflito
+ git mergetool
+
+- Abortar a resolução de conflitos
+ git merge --abort
+
+- Editar nome da branch corrente
+ git branch -m <newname>
+
+- Atualizar as referências do repositório local com o remoto
+ git remote prune origin
+
+- Excluir branch
+  git push origin --delete nome_branch
+
+- Criar branch a partir de uma feature criada anteriormente
+
+  git checkout feature/feature_origem
+  git checkout -b feature/nome_da_nova_branch
